@@ -10,7 +10,12 @@ import { LoginPage } from '../pages/login/login';
 import { MarcaPage } from '../pages/marca/marca';
 import { DirecPage } from '../pages/direc/direc';
 import { SitioPage } from '../pages/sitio/sitio';
-
+import { BaseProvider } from '../providers/base/base';
+//----------------------------------------------
+import { GeolocalitationProvider } from '../providers/geolocalitation/geolocalitation';
+import { Geolocation } from '@ionic-native/geolocation';
+import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction'
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +27,11 @@ import { SitioPage } from '../pages/sitio/sitio';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBbsOlMryAHu2ESwHHSwrDBIUU7fiENNoM'
+    }),
+    AgmDirectionModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +45,10 @@ import { SitioPage } from '../pages/sitio/sitio';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BaseProvider,
+    Geolocation,
+    GeolocalitationProvider
   ]
 })
 export class AppModule {}

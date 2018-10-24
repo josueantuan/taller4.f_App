@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
+import { GeolocalitationProvider } from "../../providers/geolocalitation/geolocalitation";
 
-/**
- * Generated class for the MarcaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -14,12 +11,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'marca.html',
 })
 export class MarcaPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  lat:any;
+  lng:any;
+  latC:any;
+  lngC:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public geoloca:GeolocalitationProvider) {
+    this.lat = this.geoloca.latD;
+    this.lng = this.geoloca.lngD;
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MarcaPage');
+  cerrar(){
+    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.popToRoot();
   }
-
+  ionViewDidLoad(){
+    this.geoloca.geolocal();
+   }
+  ngOnInit() {
+    this.lat = this.geoloca.latD;
+    this.lng = this.geoloca.lngD;
+  }
+ 
+  
 }
