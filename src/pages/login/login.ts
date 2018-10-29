@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
 import { HomePage } from '../home/home';
+import {User} from "../../model/model.user";
+import { BaseProvider } from "../../providers/base/base";
+
 
 
 @IonicPage()
@@ -12,7 +15,10 @@ export class LoginPage {
   
   username:string;
   password:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl : MenuController) {
+  user: User=new User();
+  errorMessage:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menuCtrl : MenuController,
+    private authService :BaseProvider) {
   }
   ionViewDidEnter() {
     this.menuCtrl.enable(false);
@@ -20,9 +26,20 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  login(){
+  /*login(){
     console.log(this.username,this.password);
     this.navCtrl.push(HomePage);
   
+  }*/
+  login(){
+    this.authService.logIn(this.user)
+      .subscribe(data=>{
+        this.navCtrl.push(HomePage);
+        
+        },err=>{
+        this.errorMessage="Nombre de usuario o constreña incorrectos";
+        }
+      )
+      
   }
 }

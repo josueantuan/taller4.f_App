@@ -16,6 +16,7 @@ import { GeolocalitationProvider } from '../providers/geolocalitation/geolocalit
 import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction'
+import {HttpModule} from "@angular/http";
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +32,8 @@ import { AgmDirectionModule } from 'agm-direction'
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBbsOlMryAHu2ESwHHSwrDBIUU7fiENNoM'
     }),
-    AgmDirectionModule
+    AgmDirectionModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
