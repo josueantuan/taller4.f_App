@@ -32,14 +32,14 @@ export class LoginPage {
   
   }*/
   login(){
-    this.authService.logIn(this.user)
+    /*this.authService.logIn(this.user)
       .subscribe(data=>{
         this.navCtrl.push(HomePage);
         
         },err=>{
         this.errorMessage="Nombre de usuario o constreña incorrectos";
         }
-      )
-      
+      )*/
+      this.navCtrl.push(HomePage);
   }
 }

@@ -17,6 +17,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction'
 import {HttpModule} from "@angular/http";
+import { Camera} from '@ionic-native/camera';
 @NgModule({
   declarations: [
     MyApp,
@@ -50,6 +51,7 @@ import {HttpModule} from "@angular/http";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BaseProvider,
     Geolocation,
+    Camera,
     GeolocalitationProvider
   ]
 })
